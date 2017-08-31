@@ -49,7 +49,7 @@ function response (err, res, callback) {
  *
  * @callback  callback
  * @param     {string}    method    HTTP method, i.e. GET
- * @param     {string)    path      API path, i.e. /sell
+ * @param     {string}    path      API path, i.e. /sell
  * @param     {function}  callback  `(err, data)`
  * @return    {void}
  */
