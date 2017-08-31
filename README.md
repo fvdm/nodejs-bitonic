@@ -42,7 +42,7 @@ BTC or EUR amount.
 
 param    | type     | default | description
 :--------|:---------|:--------|:-------------------------
-from     | string   |         | Currency to concert from. `btc` or `eur`
+from     | string   |         | Currency to convert from. `btc` or `eur`
 amount   | number   | 1       | Amount to convert
 callback | function |         | `(err, data)`
 
@@ -68,7 +68,7 @@ BTC or EUR amount.
 
 param    | type     | default | description
 :--------|:---------|:--------|:-------------------------
-from     | string   |         | Currency to concert from. `btc` or `eur`
+from     | string   |         | Currency to convert from. `btc` or `eur`
 amount   | number   | 1       | Amount to convert
 callback | function |         | `(err, data)`
 
