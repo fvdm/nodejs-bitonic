@@ -27,7 +27,6 @@ const config = {
 
 function response (err, res, callback) {
   let data;
-  let error;
 
   if (err) {
     callback (err);
@@ -37,8 +36,7 @@ function response (err, res, callback) {
   try {
     data = JSON.parse (res.body);
     callback (null, data);
-  }
-  catch (e) {
+  } catch (e) {
     callback (e);
   }
 }
