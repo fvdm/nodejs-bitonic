@@ -7,6 +7,8 @@ Source & dcod:  https://github.com/fvdm/nodejs-bitonic
 Feedback:       https://github.com/fvdm/nodejs-bitonic/issues
 */
 
+const httpreq = require ('httpreq');
+
 // Defaults
 const config = {
   timeout: 5000
