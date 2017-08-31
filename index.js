@@ -56,7 +56,7 @@ function request (method, path, parameters, callback) {
   const options = {
     method,
     parameters,
-    url: 'https://bitonic.nl/api',
+    url: 'https://bitonic.nl/api' + path,
     timeout: config.timeout
   };
 
