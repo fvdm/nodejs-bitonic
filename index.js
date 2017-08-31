@@ -149,9 +149,11 @@ function priceBuy (from, amount, callback) {
  */
 
 function setup (conf) {
+  let key;
+
   if (conf instanceof Object) {
-    conf.forEach ((val, key) => {
-      config[key] = val;
+    for (key in conf) {
+      config[key] = conf[val];
     });
   }
 
