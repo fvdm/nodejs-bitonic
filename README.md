@@ -2,9 +2,9 @@
 
 Unofficial API wrapper for Bitonic.nl
 
-[Node.js](https://nodejs.org)
-[Bitonic](https://bitonic.nl)
-[API documentation](https://bitonic.nl/api)
++ [Node.js](https://nodejs.org)
+* [Bitonic](https://bitonic.nl)
+* [API documentation](https://bitonic.nl/api)
 
 
 # Example
@@ -17,7 +17,7 @@ bitonic.price.buy ('eur', 5, (err, data) => {
     return console.error (err);
   }
 
-  console.log ('5 euro gets you ' + data.price + ' BTC');
+  console.log ('5 euro gets you ' + data.btc + ' BTC');
 });
 ```
 
@@ -26,6 +26,83 @@ bitonic.price.buy ('eur', 5, (err, data) => {
 
 ```sh
 npm i bitonic --save
+```
+
+
+# Methods
+
+The examples below don't include error handling.
+See the [code above](#example) for a working example.
+
+## price.buy
+**( from, [amount], callback )**
+
+Get pricing for buying BTC by providing either the
+BTC or EUR amount.
+
+param    | type     | default | description
+:--------|:---------|:--------|:-------------------------
+from     | string   |         | Currency to concert from. `btc` or `eur`
+amount   | number   | 1       | Amount to convert
+callback | function |         | `(err, data)`
+
+
+### Example
+
+```js
+bitonic.price.buy ('btc', 2, (err, data) => {
+  console.log ('2 BTC costs %s EUR', data.eur);
+});
+
+bitonic.price.buy ('eur', 5.12, (err, data) => {
+  console.log ('For 5.12 EUR you get %s BTC', data.btc);
+});
+```
+
+
+## price.sell
+**( from, [amount], callback )**
+
+Get pricing for selling BTC by providing either the
+BTC or EUR amount.
+
+param    | type     | default | description
+:--------|:---------|:--------|:-------------------------
+from     | string   |         | Currency to concert from. `btc` or `eur`
+amount   | number   | 1       | Amount to convert
+callback | function |         | `(err, data)`
+
+
+### Example
+
+```js
+bitonic.price.sell ('btc', 2, (err, data) => {
+  console.log ('You get %s EUR for selling 2 BTC', data.eur);
+});
+
+bitonic.price.sell ('eur', 5.12, (err, data) => {
+  console.log ('Sell %s BTC to get 5.12 EUR', data.btc);
+});
+```
+
+
+## price.average
+**( callback )**
+
+Get 24H average price in EUR and volume.
+
+param    | type     | default | description
+:--------|:---------|:--------|:-------------
+callback | function |         | `(err, data)`
+
+
+### Example
+
+```js
+bitonic.price.average ((err, data) => {
+  console.log ('1 BTC is %s EUR', data.price);
+  console.log ('24H volume is ', data.volume);
+});
 ```
 
 
