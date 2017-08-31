@@ -1,0 +1,46 @@
+{
+  "author": {
+    "name": "Franklin van de Meent",
+    "email": "fr@nkl.in",
+    "url": "https://frankl.in"
+  },
+  "name": "bitonic",
+  "description": "Bitonic API (unofficial)",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fvdm/nodejs-bitonic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fvdm/nodejs-bitonic/issues"
+  },
+  "main": "index.js",
+  "tonicExampleFilename": "example.js",
+  "files": [
+    "CONTRIBUTING.md",
+    "example.js"
+  ],
+  "dependencies": {
+    "httpreq": "^0.4.24"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.1",
+    "dotest": "^2.0.0",
+    "eslint": "^4.1.1",
+    "istanbul": "^0.4.5"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "test": "dotest"
+  },
+  "keywords": [
+    "api",
+    "bitonic",
+    "nl",
+    "bitcoin",
+    "finance"
+  ],
+  "license": "Unlicense"
+}
