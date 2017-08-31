@@ -153,7 +153,7 @@ function setup (conf) {
 
   if (conf instanceof Object) {
     for (key in conf) {
-      config[key] = conf[val];
+      config[key] = conf[key];
     }
   }
 
