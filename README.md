@@ -2,6 +2,12 @@
 
 Unofficial API wrapper for Bitonic.nl
 
+[![npm](https://img.shields.io/npm/v/bitonic.svg?maxAge=3600)](https://github.com/fvdm/nodejs-bitonic/blob/master/CHANGELOG.md)
+[![Build Status](https://travis-ci.org/fvdm/nodejs-bitonic.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-bitonic)
+[![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-bitonic/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-bitonic?branch=master)
+[![bitHound Dependencies](https://www.bithound.io/github/fvdm/nodejs-bitonic/badges/dependencies.svg)](https://www.bithound.io/github/fvdm/nodejs-bitonic/develop/dependencies/npm)
+[![bitHound Code](https://www.bithound.io/github/fvdm/nodejs-bitonic/badges/code.svg)](https://www.bithound.io/github/fvdm/nodejs-bitonic)
+
 + [Node.js](https://nodejs.org)
 * [Bitonic](https://bitonic.nl)
 * [API documentation](https://bitonic.nl/api)
