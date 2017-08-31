@@ -15,7 +15,8 @@ const config = {
 };
 
 
-/* Process httpreq response
+/**
+ * Process httpreq response
  *
  * @callback  callback
  * @param     {Error|null}  err  httpreq Error
@@ -43,7 +44,8 @@ function response (err, res, callback) {
 }
 
 
-/* Send API request
+/**
+ * Send API request
  *
  * @callback  callback
  * @param     {string}    method    HTTP method, i.e. GET
@@ -71,7 +73,8 @@ function request (method, path, parameters, callback) {
 }
 
 
-/* Method: price.average
+/**
+ * Method: price.average
  *
  * @callback  callback
  * @param     {function}  callback  `(err, data)`
@@ -83,7 +86,8 @@ function priceAverage (callback) {
 }
 
 
-/* Method: price.sell
+/**
+ * Method: price.sell
  *
  * @callback  callback
  * @param     {string}    from      Currency to convert from
@@ -110,7 +114,8 @@ function priceSell (from, amount, callback) {
 }
 
 
-/* Method: price.buy
+/**
+ * Method: price.buy
  *
  * @callback  callback
  * @param     {string}    from      Currency to convert from
@@ -137,7 +142,8 @@ function priceBuy (from, amount, callback) {
 }
 
 
-/* Package interface & config
+/**
+ * Package interface & config
  *
  * @param   {object}  [conf]               Configuration
  * @param   {number}  [conf.timeout=5000]  Request timeout in ms
