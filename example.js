@@ -7,7 +7,7 @@ bitonic.price.buy ('eur', 10.54, (err, data) => {
     return;
   }
 
-  console.log ('For 10.54 EUR you get ' + data.price + ' BTC');
+  console.log ('For 10.54 EUR you get ' + data.btc + ' BTC');
 });
 
 // Get EUR price for selling 2 BTC
@@ -17,5 +17,5 @@ bitonic.price.sell ('btc', 2, (err, data) => {
     return;
   }
 
-  console.log ('Selling 2 BTC will earn you ' + data.price + ' EUR');
+  console.log ('Selling 2 BTC will earn you ' + data.eur + ' EUR');
 });
