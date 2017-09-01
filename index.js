@@ -30,14 +30,9 @@ function response (err, res, callback) {
 
   if (err) {
     callback (err);
-    return;
-  }
-
-  try {
+  } else {
     data = JSON.parse (res.body);
     callback (null, data);
-  } catch (e) {
-    callback (e);
   }
 }
 
