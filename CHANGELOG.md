@@ -1,3 +1,21 @@
+#### 0.1.1 (2017-09-01)
+
+##### Bug Fixes
+
+* **request:** Fixed syntax typo ([d7433034](https://github.com/fvdm/nodejs-bitonic/commit/d7433034c9daea4e76a9723aaafd2b73550b16de))
+
+##### Other Changes
+
+* **request:** Added user-agent header ([733abce6](https://github.com/fvdm/nodejs-bitonic/commit/733abce653ca0e30cb94c89e0c8471d02c7905d6))
+
+##### Refactors
+
+* **response:** API always returns JSON data ([e8be4e42](https://github.com/fvdm/nodejs-bitonic/commit/e8be4e42a9c9e61b70ce7bda340092131914a3c9))
+
+##### Tests
+
+* **main:** Add timeout error test ([96570758](https://github.com/fvdm/nodejs-bitonic/commit/96570758cdbf42ffed3e0ffef72c13e30f4467ec))
+
 ### 0.1.0 (2017-08-31)
 
 ##### Chores
