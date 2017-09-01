@@ -1,11 +1,7 @@
 const dotest = require ('dotest');
 const pkg = require ('./');
 
-let config = {
-  timeout: String (process.env.BITONIC_TIMEOUT)
-};
-
-let app = pkg (config);
+let app = pkg();
 
 dotest.add ('Interface', test => {
   const price = app && app.price;
@@ -30,6 +26,21 @@ dotest.add ('price.average', test => {
       .isObject ('fail', 'data', data)
       .isNumber ('fail', 'data.price', data && data.price)
       .isNumber ('fail', 'data.volume', data && data.volume)
+      .done();
+  });
+});
+
+
+dotest.add ('Error: timeout', test => {
+  const tmp = pkg ({
+    timeout: 1
+  });
+
+  tmp.price.average ((err, data) => {
+    test()
+      .isError ('fail', 'err', err)
+      .isUndefined ('fail', 'data', data)
+      .isExactly ('fail', 'err.code', err && err.code, 'TIMEOUT')
       .done();
   });
 });
