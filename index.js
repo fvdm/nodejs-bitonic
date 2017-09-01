@@ -57,7 +57,9 @@ function request (method, path, parameters, callback) {
     method,
     parameters,
     url: 'https://bitonic.nl/api' + path,
-    timeout: config.timeout
+    timeout: config.timeout,
+    headers: {
+      'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)'
   };
 
   if (typeof parameters === 'function') {
