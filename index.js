@@ -55,6 +55,7 @@ function request (method, path, parameters, callback) {
     timeout: config.timeout,
     headers: {
       'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)'
+    }
   };
 
   if (typeof parameters === 'function') {
