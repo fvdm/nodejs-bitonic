@@ -86,24 +86,14 @@ function priceAverage (callback) {
  * Method: price.sell
  *
  * @callback  callback
- * @param     {string}    [from=btc]  Currency to convert from
- * @param     {number}    [amount=1]  Amount to convert
- * @param     {function}  callback    `(err, data)`
+ * @param     {string}    from      Currency to convert from
+ * @param     {number}    amount    Amount to convert
+ * @param     {function}  callback  `(err, data)`
  * @return    {void}
  */
 
 function priceSell (from, amount, callback) {
   const parameters = {};
-
-  if (typeof amount === 'function') {
-    callback = amount;
-    amount = 1;
-  }
-
-  if (typeof from === 'number') {
-    amount = from;
-    from = 'btc';
-  }
 
   parameters[from] = amount;
   request ('GET', '/sell', parameters, callback);
