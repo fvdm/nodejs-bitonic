@@ -41,16 +41,16 @@ The examples below don't include error handling.
 See the [code above](#example) for a working example.
 
 ## price.buy
-**( from, [amount], callback )**
+**( from, amount, callback )**
 
 Get pricing for buying BTC by providing either the
 BTC or EUR amount.
 
-param    | type     | default | description
-:--------|:---------|:--------|:-------------------------
-from     | string   |         | Currency to convert from. `btc` or `eur`
-amount   | number   | 1       | Amount to convert
-callback | function |         | `(err, data)`
+param    | type     | description
+:--------|:---------|:-------------------------
+from     | string   | Currency to convert from. `btc` or `eur`
+amount   | number   | Amount to convert
+callback | function | `(err, data)`
 
 
 ### Example
@@ -67,16 +67,16 @@ bitonic.price.buy ('eur', 5.12, (err, data) => {
 
 
 ## price.sell
-**( from, [amount], callback )**
+**( from, amount, callback )**
 
 Get pricing for selling BTC by providing either the
 BTC or EUR amount.
 
-param    | type     | default | description
-:--------|:---------|:--------|:-------------------------
-from     | string   |         | Currency to convert from. `btc` or `eur`
-amount   | number   | 1       | Amount to convert
-callback | function |         | `(err, data)`
+param    | type     | description
+:--------|:---------|:-------------------------
+from     | string   | Currency to convert from. `btc` or `eur`
+amount   | number   | Amount to convert
+callback | function | `(err, data)`
 
 
 ### Example
@@ -97,9 +97,9 @@ bitonic.price.sell ('eur', 5.12, (err, data) => {
 
 Get 24H average price in EUR and volume.
 
-param    | type     | default | description
-:--------|:---------|:--------|:-------------
-callback | function |         | `(err, data)`
+param    | type     | description
+:--------|:---------|:-------------
+callback | function | `(err, data)`
 
 
 ### Example
