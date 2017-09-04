@@ -50,7 +50,7 @@ param    | type     | default | description
 :--------|:---------|:--------|:---------------
 from     | string   |         | Currency to convert from. `btc` or `eur`
 amount   | number   |         | Amount to convert
-method.  | string.  | ideal   | Payment method. `ideal` or `bancontact`
+method   | string   | ideal   | Payment method. `ideal` or `bancontact`
 callback | function |         | `(err, data)`
 
 
