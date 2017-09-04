@@ -31,6 +31,19 @@ dotest.add ('price.average', test => {
 });
 
 
+dotest.add ('price.buy - default method', test => {
+  app.price.buy ('btc', 2, (err, data) => {
+    test (err)
+      .isObject ('fail', 'data', data)
+      .isNumber ('fail', 'data.price', data && data.price)
+      .isNumber ('fail', 'data.eur', data && data.eur)
+      .isExactly ('fail', 'data.btc', data && data.btc, 2)
+      .isExactly ('fail', 'data.method', data && data.method, 'ideal')
+      .done();
+  });
+});
+
+
 dotest.add ('Error: timeout', test => {
   const tmp = pkg ({
     timeout: 1
