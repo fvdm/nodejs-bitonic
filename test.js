@@ -44,6 +44,19 @@ dotest.add ('price.buy - default method', test => {
 });
 
 
+dotest.add ('price.buy - set method', test => {
+  app.price.buy ('eur', 20, 'bancontact', (err, data) => {
+    test (err)
+      .isObject ('fail', 'data', data)
+      .isNumber ('fail', 'data.price', data && data.price)
+      .isNumber ('fail', 'data.btc', data && data.btc)
+      .isExactly ('fail', 'data.eur', data && data.eur, 20)
+      .isExactly ('fail', 'data.method', data && data.method, 'bancontact')
+      .done();
+  });
+});
+
+
 dotest.add ('Error: timeout', test => {
   const tmp = pkg ({
     timeout: 1
