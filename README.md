@@ -41,16 +41,17 @@ The examples below don't include error handling.
 See the [code above](#example) for a working example.
 
 ## price.buy
-**( from, amount, callback )**
+**( from, amount, [method], callback )**
 
 Get pricing for buying BTC by providing either the
-BTC or EUR amount.
+BTC or EUR amount, including payment method fees.
 
-param    | type     | description
-:--------|:---------|:-------------------------
-from     | string   | Currency to convert from. `btc` or `eur`
-amount   | number   | Amount to convert
-callback | function | `(err, data)`
+param    | type     | default | description
+:--------|:---------|:--------|:---------------
+from     | string   |         | Currency to convert from. `btc` or `eur`
+amount   | number   |         | Amount to convert
+method.  | string.  | ideal   | Payment method. `ideal` or `bancontact`
+callback | function |         | `(err, data)`
 
 
 ### Example
