@@ -57,6 +57,19 @@ dotest.add ('price.buy - set method', test => {
 });
 
 
+dotest.add ('price.sell', test => {
+  app.price.sell ('btc', 2.5, (err, data) => {
+    test (err)
+      .isObject ('fail', 'data', data)
+      .isNumber ('fail', 'data.price', data && data.price)
+      .isNumber ('fail', 'data.eur', data && data.eur)
+      .isNumber ('fail', 'data.price', data && data.price)
+      .isExactly ('fail', 'data.btc', data && data.btc, 2.5)
+      .done();
+  });
+});
+
+
 dotest.add ('Error: timeout', test => {
   const tmp = pkg ({
     timeout: 1
