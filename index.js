@@ -104,14 +104,22 @@ function priceSell (from, amount, callback) {
  * Method: price.buy
  *
  * @callback  callback
- * @param     {string}    from      Currency to convert from
- * @param     {number}    amount    Amount to convert
- * @param     {function}  callback  `(err, data)`
+ * @param     {string}    from            Currency to convert from
+ * @param     {number}    amount          Amount to convert
+ * @param     {string}    [method=ideal]  Payment method. `ideal` or `bancontact`
+ * @param     {function}  callback        `(err, data)`
  * @return    {void}
  */
 
-function priceBuy (from, amount, callback) {
-  const parameters = {};
+function priceBuy (from, amount, method, callback) {
+  const parameters = {
+    method
+  };
+
+  if (typeof method === 'function') {
+    callback = method;
+    parameters.method = 'ideal';
+  }
 
   parameters[from] = amount;
   request ('GET', '/buy', parameters, callback);
