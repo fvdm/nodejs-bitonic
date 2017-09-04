@@ -1,3 +1,28 @@
+### 0.2.0 (2017-09-04)
+
+##### Documentation Changes
+
+* **readme:**
+  * Fixed autocorrect typos ([cb451cef](https://github.com/fvdm/nodejs-bitonic/commit/cb451cef7a1dee83b0e0febaae46e7f7494b9466))
+  * Added method parameter to price.buy ([31a63281](https://github.com/fvdm/nodejs-bitonic/commit/31a63281e9dfe3598853afa786b603bb0619bc90))
+  * Optional params now required ([7a0bdf03](https://github.com/fvdm/nodejs-bitonic/commit/7a0bdf03150fd2f7fc54043803436e756c27a158))
+
+##### New Features
+
+* **priceBuy:** Added method parameter ([802d7ce0](https://github.com/fvdm/nodejs-bitonic/commit/802d7ce058860f76eff689614a893cb0cd76e4f1))
+
+##### Refactors
+
+* **priceBuy:** Optional params now required ([fef7948a](https://github.com/fvdm/nodejs-bitonic/commit/fef7948a7c13da17b7c54fa3efbe61385b24499b))
+* **priceSell:** Optional params now required ([edb55835](https://github.com/fvdm/nodejs-bitonic/commit/edb558358ac060a825790db3739630bd32b81b70))
+
+##### Tests
+
+* **main:**
+  * Added price.sell test ([fa754f70](https://github.com/fvdm/nodejs-bitonic/commit/fa754f7062dbf54dfc12fa11dfadc8ff75bbd668))
+  * Added price.buy with method param ([3eb9d934](https://github.com/fvdm/nodejs-bitonic/commit/3eb9d93431e17306184ab48c79d28a3d2193770f))
+  * Added price.buy with default method ([bf483fdf](https://github.com/fvdm/nodejs-bitonic/commit/bf483fdf44a4d124abdcf16a14802ccba25534de))
+
 #### 0.1.1 (2017-09-01)
 
 ##### Bug Fixes
