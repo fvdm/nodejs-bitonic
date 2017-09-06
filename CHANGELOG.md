@@ -1,3 +1,13 @@
+#### 1.0.1 (2017-09-06)
+
+##### Chores
+
+* **example:** Fixed config ([61333352](https://github.com/fvdm/nodejs-bitonic/commit/6133335218dac8b1d6f6243e141f92535915aaf9))
+
+##### Documentation Changes
+
+* **readme:** Fixed config ([90ca5dff](https://github.com/fvdm/nodejs-bitonic/commit/90ca5dff572b2ba4e45867c4fd40ccc3c74e8f55))
+
 ## 1.0.0 (2017-09-06)
 
 ### 0.2.0 (2017-09-04)
