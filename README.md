@@ -16,7 +16,7 @@ Unofficial API wrapper for Bitonic.nl
 # Example
 
 ```js
-const bitonic = require ('bitonic');
+const bitonic = require ('bitonic')();
 
 bitonic.price.buy ('eur', 5, (err, data) => {
   if (err) {
@@ -32,6 +32,25 @@ bitonic.price.buy ('eur', 5, (err, data) => {
 
 ```sh
 npm i bitonic --save
+```
+
+
+# Configuration
+
+With the require you can define configuration options.
+
+param.  | type   | default | description
+:-------|:-------|:--------|:-----------
+timeout | number | 5000.   | Request timeout in ms
+
+
+### Example
+
+```js
+// set timeout to 8 seconds
+const bitonic = require ('bitonic') ({
+  timeout: 8000
+});
 ```
 
 
