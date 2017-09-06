@@ -1,4 +1,4 @@
-const bitonic = require ('bitonic');
+const bitonic = require ('bitonic')();
 
 // Get BTC price for 10.54 BTC
 bitonic.price.buy ('eur', 10.54, (err, data) => {
