@@ -1,5 +1,7 @@
 # bitonic
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-bitonic.svg)](https://greenkeeper.io/)
+
 Unofficial API wrapper for Bitonic.nl
 
 [![npm](https://img.shields.io/npm/v/bitonic.svg?maxAge=3600)](https://github.com/fvdm/nodejs-bitonic/blob/master/CHANGELOG.md)
