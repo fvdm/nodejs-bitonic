@@ -107,8 +107,7 @@ module.exports = class Bitonic {
     return this._httpRequest ({
       path: '/sell',
       parameters: {
-        from,
-        amount,
+        [from]: amount,
       },
     });
   }
@@ -133,9 +132,8 @@ module.exports = class Bitonic {
     return this._httpRequest ({
       path: '/buy',
       parameters: {
+        [from]: amount,
         method,
-        from,
-        amount,
       },
     });
   }
