@@ -135,7 +135,7 @@ function priceBuy (from, amount, method, callback) {
 
   parameters[from] = amount;
 
-  _httpRequest (
+  _httpRequest ({
     path: '/buy',
     parameters,
     callback,
