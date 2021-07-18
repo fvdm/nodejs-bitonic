@@ -101,8 +101,12 @@ dotest.add ('Error: timeout', test => {
   let data;
 
   tmp.price.average()
-    .then (dat => data = dat)
-    .catch (err => error = err)
+    .then (dat => {
+      data = dat;
+    })
+    .catch (err => {
+      error = err;
+    })
     .finally (() => {
       test()
         .isError ('fail', 'error', error)
