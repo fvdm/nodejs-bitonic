@@ -16,7 +16,8 @@ dotest.add ('Interface', test => {
     .isFunction ('fail', '.price.average', avg)
     .isFunction ('fail', '.price.buy', buy)
     .isFunction ('fail', '.price.sell', sell)
-    .done();
+    .done()
+  ;
 });
 
 
@@ -26,7 +27,8 @@ dotest.add ('price.average', test => {
       .isObject ('fail', 'data', data)
       .isNumber ('fail', 'data.price', data && data.price)
       .isNumber ('fail', 'data.volume', data && data.volume)
-      .done();
+      .done()
+    ;
   });
 });
 
@@ -39,7 +41,8 @@ dotest.add ('price.buy - default method', test => {
       .isNumber ('fail', 'data.eur', data && data.eur)
       .isExactly ('fail', 'data.btc', data && data.btc, 2)
       .isExactly ('fail', 'data.method', data && data.method, 'ideal')
-      .done();
+      .done()
+    ;
   });
 });
 
@@ -52,7 +55,8 @@ dotest.add ('price.buy - set method', test => {
       .isNumber ('fail', 'data.btc', data && data.btc)
       .isExactly ('fail', 'data.eur', data && data.eur, 20)
       .isExactly ('fail', 'data.method', data && data.method, 'bancontact')
-      .done();
+      .done()
+    ;
   });
 });
 
@@ -65,7 +69,8 @@ dotest.add ('price.sell', test => {
       .isNumber ('fail', 'data.eur', data && data.eur)
       .isNumber ('fail', 'data.price', data && data.price)
       .isExactly ('fail', 'data.btc', data && data.btc, 2.5)
-      .done();
+      .done()
+    ;
   });
 });
 
@@ -80,7 +85,8 @@ dotest.add ('Error: timeout', test => {
       .isError ('fail', 'err', err)
       .isUndefined ('fail', 'data', data)
       .isExactly ('fail', 'err.code', err && err.code, 'TIMEOUT')
-      .done();
+      .done()
+    ;
   });
 });
 

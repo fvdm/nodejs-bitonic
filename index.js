@@ -17,54 +17,60 @@ const config = {
 /**
  * Process httpreq response
  *
- * @callback  callback
- * @param     {Error|null}  err  httpreq Error
- * @param     {object}      res  httpreq response
+ * @param     {object}
+ * @param     {Error|null}  err       httpreq Error
+ * @param     {object}      res       httpreq response
  * @param     {function}    callback  `(err, data)`
+ *
+ * @callback  callback
  * @return    {void}
  */
 
-function response (err, res, callback) {
+function _httpResponse ({
+  err,
+  res,
+  callback,
+}) {
   let data;
 
   if (err) {
     callback (err);
+    return;
   }
-  else {
-    data = JSON.parse (res.body);
-    callback (null, data);
-  }
+
+  data = JSON.parse (res.body);
+  callback (null, data);
 }
 
 
 /**
  * Send API request
  *
- * @callback  callback
  * @param     {string}    method    HTTP method, i.e. GET
  * @param     {string}    path      API path, i.e. /sell
  * @param     {function}  callback  `(err, data)`
+ *
+ * @callback  callback
  * @return    {void}
  */
 
-function request (method, path, parameters, callback) {
+function _httpRequest ({
+  path,
+  parameters = null,
+  callback,
+}) {
   const options = {
-    method,
+    method: 'GET',
     parameters,
-    url: 'https://bitonic.nl/api' + path,
+    url: `https://bitonic.nl/api${path}`,
     timeout: config.timeout,
     headers: {
       'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)',
     },
   };
 
-  if (typeof parameters === 'function') {
-    callback = parameters;
-    options.parameters = null;
-  }
-
   httpreq.doRequest (options, (err, res) => {
-    response (err, res, callback);
+    _httpResponse (err, res, callback);
   });
 }
 
@@ -72,23 +78,28 @@ function request (method, path, parameters, callback) {
 /**
  * Method: price.average
  *
- * @callback  callback
  * @param     {function}  callback  `(err, data)`
+ *
+ * @callback  callback
  * @return    {void}
  */
 
 function priceAverage (callback) {
-  request ('GET', '/price', callback);
+  _httpRequest ({
+    path: '/price',
+    callback
+  });
 }
 
 
 /**
  * Method: price.sell
  *
- * @callback  callback
  * @param     {string}    from      Currency to convert from
  * @param     {number}    amount    Amount to convert
  * @param     {function}  callback  `(err, data)`
+ *
+ * @callback  callback
  * @return    {void}
  */
 
@@ -96,18 +107,24 @@ function priceSell (from, amount, callback) {
   const parameters = {};
 
   parameters[from] = amount;
-  request ('GET', '/sell', parameters, callback);
+
+  _httpRequest ({
+    path: '/sell',
+    parameters,
+    callback
+  });
 }
 
 
 /**
  * Method: price.buy
  *
- * @callback  callback
  * @param     {string}    from            Currency to convert from
  * @param     {number}    amount          Amount to convert
  * @param     {string}    [method=ideal]  Payment method. `ideal` or `bancontact`
  * @param     {function}  callback        `(err, data)`
+ *
+ * @callback  callback
  * @return    {void}
  */
 
@@ -116,32 +133,29 @@ function priceBuy (from, amount, method, callback) {
     method,
   };
 
-  if (typeof method === 'function') {
-    callback = method;
-    parameters.method = 'ideal';
-  }
-
   parameters[from] = amount;
-  request ('GET', '/buy', parameters, callback);
+
+  _httpRequest (
+    path: '/buy',
+    parameters,
+    callback,
+  });
 }
 
 
 /**
  * Package interface & config
  *
- * @param   {object}  [conf]               Configuration
- * @param   {number}  [conf.timeout=5000]  Request timeout in ms
- * @return  {object}                       Interface methods
+ * @param   {object}
+ * @param   {number}  [timeout=5000]  Request timeout in ms
+ *
+ * @return  {object}                  Interface methods
  */
 
-function setup (conf) {
+function setup ({
+  timeout = 5000,
+}) {
   let key;
-
-  if (conf instanceof Object) {
-    for (key in conf) {
-      config[key] = conf[key];
-    }
-  }
 
   return {
     price: {
