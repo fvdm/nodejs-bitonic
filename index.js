@@ -104,13 +104,11 @@ function priceAverage (callback) {
  */
 
 function priceSell (from, amount, callback) {
-  const parameters = {};
-
-  parameters[from] = amount;
-
   httpRequest ({
     path: '/sell',
-    parameters,
+    parameters: {
+      from: amount,
+    },
     callback,
   });
 }
@@ -129,15 +127,12 @@ function priceSell (from, amount, callback) {
  */
 
 function priceBuy (from, amount, method, callback) {
-  const parameters = {
-    method,
-  };
-
-  parameters[from] = amount;
-
   httpRequest ({
     path: '/buy',
-    parameters,
+    parameters: {
+      method,
+      from: amount,
+    },
     callback,
   });
 }
