@@ -42,7 +42,7 @@ module.exports = class Bitonic {
 
         resolve (res);
       });
-    }):
+    });
   }
 
 
