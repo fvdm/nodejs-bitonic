@@ -21,13 +21,13 @@
     "example.js"
   ],
   "dependencies": {
-    "httpreq": "^0.4.24"
+    "httpreq": "^0.5.2"
   },
   "devDependencies": {
-    "dotest": "^2.3.0"
+    "dotest": "^2.9.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=12"
   },
   "scripts": {
     "test": "dotest"
