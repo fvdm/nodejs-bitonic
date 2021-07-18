@@ -14,10 +14,10 @@ module.exports = class Bitonic {
    * Configuration
    *
    * @param   {object}  args
-   * @param   {numbet}  [args.timeout]  Request time out in ms
+   * @param   {number}  [args.timeout]  Request time out in ms
    */
 
-  constuctor ({
+  constructor ({
     timeout = 5000,
   } = {}) {
     this._config = {
