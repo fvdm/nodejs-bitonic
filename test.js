@@ -6,18 +6,16 @@ let app = new pkg();
 dotest.add ('Interface', test => {
   test()
     .isClass ('fail', 'exports', pkg)
-    .isClass ('fail', 'instance', app)
-    .isObject ('fail', '.price', app && app.price)
-    .isFunction ('fail', '.price.average', app && app.avg)
-    .isFunction ('fail', '.price.buy', app && app.buy)
-    .isFunction ('fail', '.price.sell', app && app.sell)
+    .isFunction ('fail', '.priceAverage', app && app.priceAverage)
+    .isFunction ('fail', '.priceBuy', app && app.priceBuy)
+    .isFunction ('fail', '.priceSell', app && app.priceSell)
     .done()
   ;
 });
 
 
-dotest.add ('price.average', test => {
-  app.price.average()
+dotest.add ('priceAverage', test => {
+  app.priceAverage()
     .then (data => {
       test()
         .isObject ('fail', 'data', data)
@@ -31,8 +29,8 @@ dotest.add ('price.average', test => {
 });
 
 
-dotest.add ('price.buy - default method', test => {
-  app.price.buy ({
+dotest.add ('priceBuy - default method', test => {
+  app.priceBuy ({
     from: 'btc',
     amount: 2,
   })
@@ -51,8 +49,8 @@ dotest.add ('price.buy - default method', test => {
 });
 
 
-dotest.add ('price.buy - set method', test => {
-  app.price.buy ({
+dotest.add ('priceBuy - set method', test => {
+  app.priceBuy ({
     from: 'eur',
     amount: 20,
     method: 'bancontact',
@@ -72,8 +70,8 @@ dotest.add ('price.buy - set method', test => {
 });
 
 
-dotest.add ('price.sell', test => {
-  app.price.sell ({
+dotest.add ('priceSell', test => {
+  app.priceSell ({
     from: 'btc',
     amount: 2.5,
   })
@@ -100,13 +98,13 @@ dotest.add ('Error: timeout', test => {
   let error;
   let data;
 
-  tmp.price.average()
     .then (dat => {
       data = dat;
     })
     .catch (err => {
       error = err;
     })
+  tmp.priceAverage()
     .finally (() => {
       test()
         .isError ('fail', 'error', error)
