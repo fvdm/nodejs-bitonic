@@ -2,9 +2,8 @@
 Name:           bitonic
 Description:    Node.js API wrapper for Bitonic.nl (unofficial)
 License:        The Unlicense (see LICENSE file)
-Author:         Franklin van de Meent (https://frankl.in)
-Source & dcod:  https://github.com/fvdm/nodejs-bitonic
-Feedback:       https://github.com/fvdm/nodejs-bitonic/issues
+Author:         Franklin (https://fvdm.com)
+Source & docs:  https://github.com/fvdm/nodejs-bitonic
 */
 
 const httpreq = require ('httpreq');

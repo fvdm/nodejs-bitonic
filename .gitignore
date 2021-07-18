@@ -15,9 +15,8 @@ lib-cov
 coverage
 .nyc_output
 
-# Otherd
+# Others
 .grunt
-
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)

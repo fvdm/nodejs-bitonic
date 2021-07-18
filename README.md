@@ -1,21 +1,17 @@
 # bitonic
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-bitonic.svg)](https://greenkeeper.io/)
-
 Unofficial API wrapper for Bitonic.nl
 
 [![npm](https://img.shields.io/npm/v/bitonic.svg?maxAge=3600)](https://github.com/fvdm/nodejs-bitonic/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-bitonic.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-bitonic)
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-bitonic/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-bitonic?branch=master)
-[![bitHound Dependencies](https://www.bithound.io/github/fvdm/nodejs-bitonic/badges/dependencies.svg)](https://www.bithound.io/github/fvdm/nodejs-bitonic/develop/dependencies/npm)
-[![bitHound Code](https://www.bithound.io/github/fvdm/nodejs-bitonic/badges/code.svg)](https://www.bithound.io/github/fvdm/nodejs-bitonic)
 
 + [Node.js](https://nodejs.org)
 * [Bitonic](https://bitonic.nl)
 * [API documentation](https://bitonic.nl/api)
 
 
-# Example
+## Example
 
 ```js
 const bitonic = require ('bitonic')();
@@ -30,14 +26,14 @@ bitonic.price.buy ('eur', 5, (err, data) => {
 ```
 
 
-# Installation
+## Installation
 
 ```sh
-npm i bitonic --save
+npm i bitonic
 ```
 
 
-# Configuration
+## Configuration
 
 With the require you can define configuration options.
 
@@ -56,12 +52,12 @@ const bitonic = require ('bitonic') ({
 ```
 
 
-# Methods
+## Methods
 
 The examples below don't include error handling.
 See the [code above](#example) for a working example.
 
-## price.buy
+### price.buy
 **( from, amount, [method], callback )**
 
 Get pricing for buying BTC by providing either the
@@ -75,7 +71,7 @@ method   | string   | ideal   | Payment method. `ideal` or `bancontact`
 callback | function |         | `(err, data)`
 
 
-### Example
+#### Example
 
 ```js
 bitonic.price.buy ('btc', 2, (err, data) => {
@@ -88,7 +84,7 @@ bitonic.price.buy ('eur', 5.12, (err, data) => {
 ```
 
 
-## price.sell
+### price.sell
 **( from, amount, callback )**
 
 Get pricing for selling BTC by providing either the
@@ -101,7 +97,7 @@ amount   | number   | Amount to convert
 callback | function | `(err, data)`
 
 
-### Example
+#### Example
 
 ```js
 bitonic.price.sell ('btc', 2, (err, data) => {
@@ -114,7 +110,7 @@ bitonic.price.sell ('eur', 5.12, (err, data) => {
 ```
 
 
-## price.average
+### price.average
 **( callback )**
 
 Get 24H average price in EUR and volume.
@@ -124,7 +120,7 @@ param    | type     | description
 callback | function | `(err, data)`
 
 
-### Example
+#### Example
 
 ```js
 bitonic.price.average ((err, data) => {
@@ -134,7 +130,7 @@ bitonic.price.average ((err, data) => {
 ```
 
 
-# Unlicense
+## Unlicense
 
 This is free and unencumbered software released into the public domain.
 
@@ -162,9 +158,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org>
 
 
-# Author
+## Author
 
-[Franklin van de Meent](https://frankl.in)
-
-Do you like this project?
-[Buying me a coffee](https://ko-fi.com/franklin) keeps me motivated to maintain the code.
+[Franklin](https://fvdm.com)
+| [Buy me a coffee](https://fvdm.com/donating/)
