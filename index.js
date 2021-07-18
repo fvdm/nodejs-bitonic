@@ -84,7 +84,7 @@ module.exports = class Bitonic {
    */
 
   async priceAverage () {
-    return this._httpRequest ({
+    return this._apiRequest ({
       path: '/price',
     });
   }
@@ -104,7 +104,7 @@ module.exports = class Bitonic {
     from,
     amount,
   }) {
-    return this._httpRequest ({
+    return this._apiRequest ({
       path: '/sell',
       parameters: {
         [from]: amount,
@@ -129,7 +129,7 @@ module.exports = class Bitonic {
     amount,
     method = 'ideal',
   }) {
-    return this._httpRequest ({
+    return this._apiRequest ({
       path: '/buy',
       parameters: {
         [from]: amount,
