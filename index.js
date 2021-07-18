@@ -26,7 +26,7 @@ const config = {
  * @return    {void}
  */
 
-function _httpResponse ({
+function httpResponse ({
   err,
   res,
   callback,
@@ -54,7 +54,7 @@ function _httpResponse ({
  * @return    {void}
  */
 
-function _httpRequest ({
+function httpRequest ({
   path,
   parameters = null,
   callback,
@@ -69,8 +69,8 @@ function _httpRequest ({
     },
   };
 
-    _httpResponse (err, res, callback);
   doRequest (options, (err, res) => {
+    httpResponse (err, res, callback);
   });
 }
 
@@ -85,7 +85,7 @@ function _httpRequest ({
  */
 
 function priceAverage (callback) {
-  _httpRequest ({
+  httpRequest ({
     path: '/price',
     callback
   });
@@ -108,7 +108,7 @@ function priceSell (from, amount, callback) {
 
   parameters[from] = amount;
 
-  _httpRequest ({
+  httpRequest ({
     path: '/sell',
     parameters,
     callback
@@ -135,7 +135,7 @@ function priceBuy (from, amount, method, callback) {
 
   parameters[from] = amount;
 
-  _httpRequest ({
+  httpRequest ({
     path: '/buy',
     parameters,
     callback,
