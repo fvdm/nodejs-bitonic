@@ -21,7 +21,7 @@ module.exports = class Bitonic {
     timeout = 5000,
   }) {
     this._config = {
-      timeout;
+      timeout,
     };
   }
 
