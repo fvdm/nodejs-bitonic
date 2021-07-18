@@ -107,7 +107,8 @@ function priceSell (from, amount, callback) {
   httpRequest ({
     path: '/sell',
     parameters: {
-      from: amount,
+      from,
+      amount,
     },
     callback,
   });
@@ -131,7 +132,8 @@ function priceBuy (from, amount, method, callback) {
     path: '/buy',
     parameters: {
       method,
-      from: amount,
+      from,
+      amount,
     },
     callback,
   });
