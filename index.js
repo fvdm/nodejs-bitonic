@@ -56,7 +56,7 @@ module.exports = class Bitonic {
    * @return  {Promise<object>}
    */
 
-  async apiRequest ({
+  async _apiRequest ({
     path,
     parameters = null,
   }) {
