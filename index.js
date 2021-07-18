@@ -104,7 +104,7 @@ module.exports = class Bitonic {
     from,
     amount,
   }) {
-    return thid._httpRequest ({
+    return this._httpRequest ({
       path: '/sell',
       parameters: {
         from,
