@@ -72,7 +72,7 @@ dotest.add ('price.sell', test => {
 
 dotest.add ('Error: timeout', test => {
   const tmp = pkg ({
-    timeout: 1
+    timeout: 1,
   });
 
   tmp.price.average ((err, data) => {

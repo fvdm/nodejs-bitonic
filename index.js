@@ -10,7 +10,7 @@ const httpreq = require ('httpreq');
 
 // Defaults
 const config = {
-  timeout: 5000
+  timeout: 5000,
 };
 
 
@@ -29,7 +29,8 @@ function response (err, res, callback) {
 
   if (err) {
     callback (err);
-  } else {
+  }
+  else {
     data = JSON.parse (res.body);
     callback (null, data);
   }
@@ -53,8 +54,8 @@ function request (method, path, parameters, callback) {
     url: 'https://bitonic.nl/api' + path,
     timeout: config.timeout,
     headers: {
-      'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)'
-    }
+      'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)',
+    },
   };
 
   if (typeof parameters === 'function') {
@@ -112,7 +113,7 @@ function priceSell (from, amount, callback) {
 
 function priceBuy (from, amount, method, callback) {
   const parameters = {
-    method
+    method,
   };
 
   if (typeof method === 'function') {
@@ -146,8 +147,8 @@ function setup (conf) {
     price: {
       buy: priceBuy,
       sell: priceSell,
-      average: priceAverage
-    }
+      average: priceAverage,
+    },
   };
 }
 
