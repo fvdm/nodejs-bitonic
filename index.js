@@ -6,7 +6,7 @@ Author:         Franklin (https://fvdm.com)
 Source & docs:  https://github.com/fvdm/nodejs-bitonic
 */
 
-const httpreq = require ('httpreq');
+const { doRequest } = require ('httpreq');
 
 // Defaults
 const config = {
@@ -69,8 +69,8 @@ function _httpRequest ({
     },
   };
 
-  httpreq.doRequest (options, (err, res) => {
     _httpResponse (err, res, callback);
+  doRequest (options, (err, res) => {
   });
 }
 
