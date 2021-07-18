@@ -150,7 +150,6 @@ function priceBuy (from, amount, method, callback) {
 function setup ({
   timeout = 5000,
 }) {
-  let key;
   config.timeout = timeout;
 
   return {
