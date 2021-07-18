@@ -9,7 +9,7 @@ Source & docs:  https://github.com/fvdm/nodejs-bitonic
 const { doRequest } = require ('httpreq');
 
 // Defaults
-const config = {
+let config = {
   timeout: 5000,
 };
 
