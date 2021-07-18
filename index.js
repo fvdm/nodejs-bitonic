@@ -87,7 +87,7 @@ function httpRequest ({
 function priceAverage (callback) {
   httpRequest ({
     path: '/price',
-    callback
+    callback,
   });
 }
 
@@ -111,7 +111,7 @@ function priceSell (from, amount, callback) {
   httpRequest ({
     path: '/sell',
     parameters,
-    callback
+    callback,
   });
 }
 
