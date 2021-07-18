@@ -20,7 +20,9 @@ module.exports = class Bitonic {
   constuctor ({
     timeout = 5000,
   }) {
-    this._config.timeout = timeout;
+    this._config = {
+      timeout;
+    };
   }
 
 
