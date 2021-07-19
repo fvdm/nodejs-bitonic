@@ -11,7 +11,7 @@ bitonic.priceBuy ({
 ;
 
 // Get EUR price for selling 2 BTC
-bitonic.price.sell ({
+bitonic.priceSell ({
   from: 'btc',
   amount: 2,
 })
