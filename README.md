@@ -14,15 +14,16 @@ Unofficial API wrapper for Bitonic.nl
 ## Example
 
 ```js
-const bitonic = require ('bitonic')();
+const Bitonic = require ('bitonic');
+const bitonic = new Bitonic;
 
-bitonic.price.buy ('eur', 5, (err, data) => {
-  if (err) {
-    return console.error (err);
-  }
-
-  console.log ('5 euro gets you ' + data.btc + ' BTC');
-});
+bitonic.buy (
+  from: 'eur',
+  amount: 5,
+})
+  .then (data => console.log (`${data.eur} EUR gets you ${data.btc} BTC`))
+  .catch (console.error)
+;
 ```
 
 
@@ -35,19 +36,20 @@ npm i bitonic
 
 ## Configuration
 
-With the require you can define configuration options.
+You can configure these params in the constructor:
 
-param.  | type   | default | description
-:-------|:-------|:--------|:-----------
-timeout | number | 5000.   | Request timeout in ms
+param     | type   | default | description
+:---------|:-------|:--------|:-----------
+[timeout] | number | 5000    | Request timeout in ms
 
 
 ### Example
 
 ```js
 // set timeout to 8 seconds
-const bitonic = require ('bitonic') ({
-  timeout: 8000
+const Bitonic = require ('bitonic');
+const bitonic = new Bitonic ({
+  timeout: 8000,
 });
 ```
 
@@ -57,8 +59,8 @@ const bitonic = require ('bitonic') ({
 The examples below don't include error handling.
 See the [code above](#example) for a working example.
 
-### price.buy
-**( from, amount, [method], callback )**
+### priceBuy
+**({ from, amount, [method] })**
 
 Get pricing for buying BTC by providing either the
 BTC or EUR amount, including payment method fees.
@@ -67,25 +69,24 @@ param    | type     | default | description
 :--------|:---------|:--------|:---------------
 from     | string   |         | Currency to convert from. `btc` or `eur`
 amount   | number   |         | Amount to convert
-method   | string   | ideal   | Payment method. `ideal` or `bancontact`
-callback | function |         | `(err, data)`
+[method] | string   | ideal   | Payment method. `ideal` or `bancontact`
 
 
 #### Example
 
 ```js
-bitonic.price.buy ('btc', 2, (err, data) => {
-  console.log ('2 BTC costs %s EUR', data.eur);
-});
-
-bitonic.price.buy ('eur', 5.12, (err, data) => {
-  console.log ('For 5.12 EUR you get %s BTC', data.btc);
-});
+bitonic.priceBuy ({
+  from: 'btc',
+  amount: 2,
+})
+  .then (data => console.log (`${data.btc} BTC costs ${data.eur} EUR`))
+  .catch (console.error)
+;
 ```
 
 
-### price.sell
-**( from, amount, callback )**
+### priceSell
+**({ from, amount })**
 
 Get pricing for selling BTC by providing either the
 BTC or EUR amount.
@@ -94,39 +95,37 @@ param    | type     | description
 :--------|:---------|:-------------------------
 from     | string   | Currency to convert from. `btc` or `eur`
 amount   | number   | Amount to convert
-callback | function | `(err, data)`
 
 
 #### Example
 
 ```js
-bitonic.price.sell ('btc', 2, (err, data) => {
-  console.log ('You get %s EUR for selling 2 BTC', data.eur);
-});
-
-bitonic.price.sell ('eur', 5.12, (err, data) => {
-  console.log ('Sell %s BTC to get 5.12 EUR', data.btc);
-});
+bitonic.priceSell ({
+  from: 'eur',
+  amount: 5.12,
+})
+  .then (data => console.log (`Sell ${data.btc} BTC to get ${data.eur} EUR`))
+  .catch (console.error)
+;
 ```
 
 
-### price.average
-**( callback )**
+### priceAverage
+**( )**
 
 Get 24H average price in EUR and volume.
-
-param    | type     | description
-:--------|:---------|:-------------
-callback | function | `(err, data)`
 
 
 #### Example
 
 ```js
-bitonic.price.average ((err, data) => {
-  console.log ('1 BTC is %s EUR', data.price);
-  console.log ('24H volume is ', data.volume);
-});
+bitonic.priceAverage()
+  .then (data => {
+    console.log (`1 BTC is ${data.price} EUR`);
+    console.log (`24H volume is ${data.volume}`);
+  })
+  .catch (console.error)
+;
 ```
 
 

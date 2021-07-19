@@ -8,159 +8,136 @@ Source & docs:  https://github.com/fvdm/nodejs-bitonic
 
 const { doRequest } = require ('httpreq');
 
-// Defaults
-let config = {
-  timeout: 5000,
-};
+module.exports = class Bitonic {
 
+  /**
+   * Configuration
+   *
+   * @param   {object}  args
+   * @param   {number}  [args.timeout=5000]  Request time out in ms
+   */
 
-/**
- * Process httpreq response
- *
- * @param     {object}
- * @param     {Error|null}  err       httpreq Error
- * @param     {object}      res       httpreq response
- * @param     {function}    callback  `(err, data)`
- *
- * @callback  callback
- * @return    {void}
- */
-
-function httpResponse ({
-  err,
-  res,
-  callback,
-}) {
-  let data;
-
-  if (err) {
-    callback (err);
-    return;
+  constructor ({
+    timeout = 5000,
+  } = {}) {
+    this._config = {
+      timeout,
+    };
   }
 
-  data = JSON.parse (res.body);
-  callback (null, data);
-}
+
+  /**
+   * Promisify httpreq.doRequest
+   *
+   * @param   {object}  options  doRequest options
+   *
+   * @return  {Promise<object>}
+   */
+
+  _httpRequest (options) {
+    return new Promise ((resolve, reject) => {
+      doRequest (options, (err, res) => {
+        if (err) {
+          reject (err);
+          return;
+        }
+
+        resolve (res);
+      });
+    });
+  }
 
 
-/**
- * Send API request
- *
- * @param     {string}    method    HTTP method, i.e. GET
- * @param     {string}    path      API path, i.e. /sell
- * @param     {function}  callback  `(err, data)`
- *
- * @callback  callback
- * @return    {void}
- */
+  /**
+   * Send API request
+   *
+   * @param   {object}  args
+   * @param   {string}  args.path          API path, i.e. /sell
+   * @param   {object}  [args.parameters]  Request parameters
+   *
+   * @return  {Promise<object>}
+   */
 
-function httpRequest ({
-  path,
-  parameters = null,
-  callback,
-}) {
-  const options = {
-    method: 'GET',
-    parameters,
-    url: `https://bitonic.nl/api${path}`,
-    timeout: config.timeout,
-    headers: {
-      'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)',
-    },
-  };
+  async _apiRequest ({
+    path,
+    parameters = null,
+  }) {
+    const options = {
+      method: 'GET',
+      parameters,
+      url: `https://bitonic.nl/api${path}`,
+      timeout: this._config.timeout,
+      headers: {
+        'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)',
+      },
+    };
 
-  doRequest (options, (err, res) => {
-    httpResponse (err, res, callback);
-  });
-}
-
-
-/**
- * Method: price.average
- *
- * @param     {function}  callback  `(err, data)`
- *
- * @callback  callback
- * @return    {void}
- */
-
-function priceAverage (callback) {
-  httpRequest ({
-    path: '/price',
-    callback,
-  });
-}
+    return this._httpRequest (options)
+      .then (res => res.body)
+      .then (JSON.parse)
+    ;
+  }
 
 
-/**
- * Method: price.sell
- *
- * @param     {string}    from      Currency to convert from
- * @param     {number}    amount    Amount to convert
- * @param     {function}  callback  `(err, data)`
- *
- * @callback  callback
- * @return    {void}
- */
+  /**
+   * Method: priceAverage
+   *
+   * @return  {Promise<object>}
+   */
 
-function priceSell (from, amount, callback) {
-  httpRequest ({
-    path: '/sell',
-    parameters: {
-      from,
-      amount,
-    },
-    callback,
-  });
-}
+  async priceAverage () {
+    return this._apiRequest ({
+      path: '/price',
+    });
+  }
 
 
-/**
- * Method: price.buy
- *
- * @param     {string}    from            Currency to convert from
- * @param     {number}    amount          Amount to convert
- * @param     {string}    [method=ideal]  Payment method. `ideal` or `bancontact`
- * @param     {function}  callback        `(err, data)`
- *
- * @callback  callback
- * @return    {void}
- */
+  /**
+   * Method: priceSell
+   *
+   * @param   {object}  args
+   * @param   {string}  args.from    Currency to convert from
+   * @param   {number}  args.amount  Amount to convert
+   *
+   * @return  {Promise<object>}
+   */
 
-function priceBuy (from, amount, method, callback) {
-  httpRequest ({
-    path: '/buy',
-    parameters: {
-      method,
-      from,
-      amount,
-    },
-    callback,
-  });
-}
+  async priceSell ({
+    from,
+    amount,
+  }) {
+    return this._apiRequest ({
+      path: '/sell',
+      parameters: {
+        [from]: amount,
+      },
+    });
+  }
 
 
-/**
- * Package interface & config
- *
- * @param   {object}
- * @param   {number}  [timeout=5000]  Request timeout in ms
- *
- * @return  {object}                  Interface methods
- */
+  /**
+   * Method: priceBuy
+   *
+   * @param   {object}  args
+   * @param   {string}  args.from            Currency to convert from
+   * @param   {number}  args.amount          Amount to convert
+   * @param   {string}  [args.method=ideal]  Payment method. `ideal` or `bancontact`
+   *
+   * @return  {Promise<object>}
+   */
 
-function setup ({
-  timeout = 5000,
-}) {
-  config.timeout = timeout;
+  async priceBuy ({
+    from,
+    amount,
+    method = 'ideal',
+  }) {
+    return this._apiRequest ({
+      path: '/buy',
+      parameters: {
+        [from]: amount,
+        method,
+      },
+    });
+  }
 
-  return {
-    price: {
-      buy: priceBuy,
-      sell: priceSell,
-      average: priceAverage,
-    },
-  };
-}
-
-module.exports = setup;
+};

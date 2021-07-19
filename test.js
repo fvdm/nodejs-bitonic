@@ -1,93 +1,115 @@
 const dotest = require ('dotest');
 const pkg = require ('./');
 
-let app = pkg();
+let app = new pkg();
 
 dotest.add ('Interface', test => {
-  const price = app && app.price;
-  const avg = price && price.average;
-  const buy = price && price.buy;
-  const sell = price && price.sell;
-
   test()
-    .isFunction ('fail', 'exports', pkg)
-    .isObject ('fail', 'app', app)
-    .isObject ('fail', '.price', price)
-    .isFunction ('fail', '.price.average', avg)
-    .isFunction ('fail', '.price.buy', buy)
-    .isFunction ('fail', '.price.sell', sell)
+    .isClass ('fail', 'exports', pkg)
+    .isFunction ('fail', '.priceAverage', app && app.priceAverage)
+    .isFunction ('fail', '.priceBuy', app && app.priceBuy)
+    .isFunction ('fail', '.priceSell', app && app.priceSell)
     .done()
   ;
 });
 
 
-dotest.add ('price.average', test => {
-  app.price.average ((err, data) => {
-    test (err)
-      .isObject ('fail', 'data', data)
-      .isNumber ('fail', 'data.price', data && data.price)
-      .isNumber ('fail', 'data.volume', data && data.volume)
-      .done()
-    ;
-  });
+dotest.add ('priceAverage', test => {
+  app.priceAverage()
+    .then (data => {
+      test()
+        .isObject ('fail', 'data', data)
+        .isNumber ('fail', 'data.price', data && data.price)
+        .isNumber ('fail', 'data.volume', data && data.volume)
+        .done()
+      ;
+    })
+    .catch (err => test (err).done())
+  ;
 });
 
 
-dotest.add ('price.buy - default method', test => {
-  app.price.buy ('btc', 2, (err, data) => {
-    test (err)
-      .isObject ('fail', 'data', data)
-      .isNumber ('fail', 'data.price', data && data.price)
-      .isNumber ('fail', 'data.eur', data && data.eur)
-      .isExactly ('fail', 'data.btc', data && data.btc, 2)
-      .isExactly ('fail', 'data.method', data && data.method, 'ideal')
-      .done()
-    ;
-  });
+dotest.add ('priceBuy - default method', test => {
+  app.priceBuy ({
+    from: 'btc',
+    amount: 2,
+  })
+    .then (data => {
+      test()
+        .isObject ('fail', 'data', data)
+        .isNumber ('fail', 'data.price', data && data.price)
+        .isNumber ('fail', 'data.eur', data && data.eur)
+        .isExactly ('fail', 'data.btc', data && data.btc, 2)
+        .isExactly ('fail', 'data.method', data && data.method, 'ideal')
+        .done()
+      ;
+    })
+    .catch (err => test (err).done())
+  ;
 });
 
 
-dotest.add ('price.buy - set method', test => {
-  app.price.buy ('eur', 20, 'bancontact', (err, data) => {
-    test (err)
-      .isObject ('fail', 'data', data)
-      .isNumber ('fail', 'data.price', data && data.price)
-      .isNumber ('fail', 'data.btc', data && data.btc)
-      .isExactly ('fail', 'data.eur', data && data.eur, 20)
-      .isExactly ('fail', 'data.method', data && data.method, 'bancontact')
-      .done()
-    ;
-  });
+dotest.add ('priceBuy - set method', test => {
+  app.priceBuy ({
+    from: 'eur',
+    amount: 20,
+    method: 'bancontact',
+  })
+    .then (data => {
+      test()
+        .isObject ('fail', 'data', data)
+        .isNumber ('fail', 'data.price', data && data.price)
+        .isNumber ('fail', 'data.btc', data && data.btc)
+        .isExactly ('fail', 'data.eur', data && data.eur, 20)
+        .isExactly ('fail', 'data.method', data && data.method, 'bancontact')
+        .done()
+      ;
+    })
+    .catch (err => test (err).done())
+  ;
 });
 
 
-dotest.add ('price.sell', test => {
-  app.price.sell ('btc', 2.5, (err, data) => {
-    test (err)
-      .isObject ('fail', 'data', data)
-      .isNumber ('fail', 'data.price', data && data.price)
-      .isNumber ('fail', 'data.eur', data && data.eur)
-      .isNumber ('fail', 'data.price', data && data.price)
-      .isExactly ('fail', 'data.btc', data && data.btc, 2.5)
-      .done()
-    ;
-  });
+dotest.add ('priceSell', test => {
+  app.priceSell ({
+    from: 'btc',
+    amount: 2.5,
+  })
+    .then (data => {
+      test()
+        .isObject ('fail', 'data', data)
+        .isNumber ('fail', 'data.price', data && data.price)
+        .isNumber ('fail', 'data.eur', data && data.eur)
+        .isNumber ('fail', 'data.price', data && data.price)
+        .isExactly ('fail', 'data.btc', data && data.btc, 2.5)
+        .done()
+      ;
+    })
+    .catch (err => test (err).done())
+  ;
 });
 
 
 dotest.add ('Error: timeout', test => {
-  const tmp = pkg ({
+  const tmp = new pkg ({
     timeout: 1,
   });
 
-  tmp.price.average ((err, data) => {
-    test()
-      .isError ('fail', 'err', err)
-      .isUndefined ('fail', 'data', data)
-      .isExactly ('fail', 'err.code', err && err.code, 'TIMEOUT')
-      .done()
-    ;
-  });
+  let error;
+  let data;
+
+  tmp.priceAverage()
+    .then (dat => { data = dat; })
+    .catch (err => { error = err; })
+    .finally (() => {
+      test()
+        .isError ('fail', 'error', error)
+        .isUndefined ('fail', 'data', data)
+        .isExactly ('fail', 'error.code', error && error.code, 'TIMEOUT')
+        .done()
+      ;
+    })
+  ;
 });
 
 
