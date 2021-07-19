@@ -80,7 +80,7 @@ module.exports = class Bitonic {
 
 
   /**
-   * Method: price.average
+   * Method: priceAverage
    *
    * @return  {Promise<object>}
    */
@@ -93,7 +93,7 @@ module.exports = class Bitonic {
 
 
   /**
-   * Method: price.sell
+   * Method: priceSell
    *
    * @param   {object}  args
    * @param   {string}  args.from    Currency to convert from
@@ -116,7 +116,7 @@ module.exports = class Bitonic {
 
 
   /**
-   * Method: price.buy
+   * Method: priceBuy
    *
    * @param   {object}  args
    * @param   {string}  args.from            Currency to convert from
