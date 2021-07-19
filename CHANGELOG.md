@@ -1,3 +1,51 @@
+## 2.0.0 (2021-07-19)
+
+##### Breaking Changes
+
+*  Rewritten to a class with promises ([#7](https://github.com/fvdm/nodejs-bitonic/pull/7)) ([d91a1c02](https://github.com/fvdm/nodejs-bitonic/commit/d91a1c02720fdf8733785cd8d46d3d1b6328b95b))
+
+##### Chores
+
+* **github:**  Added Dependabot action ([d5ad26a0](https://github.com/fvdm/nodejs-bitonic/commit/d5ad26a0c869d23df5aa711f38e72dad7131c87f))
+* **package:**  Update dependencies ([d055813b](https://github.com/fvdm/nodejs-bitonic/commit/d055813b026521df7436b47e6899a4c0db01746d))
+*  Clean up old stuff ([88f8105b](https://github.com/fvdm/nodejs-bitonic/commit/88f8105be10f106a534e5031bb4bb432b57b44b6))
+
+##### Documentation Changes
+
+*  Fixed example typo ([9495d87d](https://github.com/fvdm/nodejs-bitonic/commit/9495d87d6fda753ad84e6596dc259b05c7a713b2))
+* **badges:**  Replaced Travis with Github action ([40811e0b](https://github.com/fvdm/nodejs-bitonic/commit/40811e0b733385201d22d0e6210c167bdf1905dd))
+
+##### Bug Fixes
+
+*  Global config const ([f466c72f](https://github.com/fvdm/nodejs-bitonic/commit/f466c72fb6128adbeefa2b329c19dabb6bcb4e47))
+*  Wrong mapping from and amount params ([6615a9d1](https://github.com/fvdm/nodejs-bitonic/commit/6615a9d1e8f5276b4bebce395564700058fc5d38))
+*  Config timeout in setup() ([84925c2f](https://github.com/fvdm/nodejs-bitonic/commit/84925c2f3de6f46f762a8ebfa4e5ae94de19bb9e))
+*  Syntax typo ([f2a5d57d](https://github.com/fvdm/nodejs-bitonic/commit/f2a5d57df6d30616a9a949c560f7fd2851430700))
+
+##### Refactors
+
+*  Simplified parameters ([9b6c67c4](https://github.com/fvdm/nodejs-bitonic/commit/9b6c67c4adf6e8c90a7b81f67be52c657d28be6e))
+*  Only require doRequest from httpreq ([da6668d4](https://github.com/fvdm/nodejs-bitonic/commit/da6668d4e109f83e87ee436ada2bf5de9846caa6))
+*  Modernized inner workings ([5e23a64e](https://github.com/fvdm/nodejs-bitonic/commit/5e23a64ed32070ef65ad06e7c019a81c3aeeeb5d))
+
+##### Code Style Changes
+
+*  Remove unused var ([e9a0370d](https://github.com/fvdm/nodejs-bitonic/commit/e9a0370de99c3dbbfbd58fab9b6bf4ffb66b2960))
+* **lint:**
+  *  Fixed trailing commas ([f29a2cd2](https://github.com/fvdm/nodejs-bitonic/commit/f29a2cd25bc779afe7828d4e4f436f917b532521))
+  *  Fixed dangling underscores ([7fd7c6ae](https://github.com/fvdm/nodejs-bitonic/commit/7fd7c6ae457cd566e937f5a4a210a530e646d8df))
+  *  Fixed lint errors ([ae184629](https://github.com/fvdm/nodejs-bitonic/commit/ae184629120d96d5d86c00bd5052023e48bcb943))
+
+##### Tests
+
+* **config:**
+  *  Added Github action for Node ([ba4bf572](https://github.com/fvdm/nodejs-bitonic/commit/ba4bf572dc51e4a82b170cd8d351115244dd7c5b))
+  *  Added CodeQL analysis ([2f90868d](https://github.com/fvdm/nodejs-bitonic/commit/2f90868d5bdebe13582605de1703c965586d3e43))
+  *  Modernized ESLint ([50f8c591](https://github.com/fvdm/nodejs-bitonic/commit/50f8c5910acaf884a3f505fbe40bfca94bce8729))
+  *  Update Travis node versions and env ([cf43c3fa](https://github.com/fvdm/nodejs-bitonic/commit/cf43c3fae8ef260f02ab0d83ccee5d2f23275601))
+  *  Update Travis CI node versions ([66ab2f9f](https://github.com/fvdm/nodejs-bitonic/commit/66ab2f9f18ab5d29285ee892556b27641d239bb4))
+* **package:**  Change dev deps to dotest ([a7fdad8a](https://github.com/fvdm/nodejs-bitonic/commit/a7fdad8a70eefd0bb04fbebfd9bc20c630e8e1dc))
+
 #### 1.0.1 (2017-09-06)
 
 ##### Chores
