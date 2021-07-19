@@ -17,7 +17,6 @@
   "main": "index.js",
   "runkitExampleFilename": "example.js",
   "files": [
-    "CONTRIBUTING.md",
     "example.js"
   ],
   "dependencies": {
