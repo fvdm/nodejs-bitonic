@@ -1,3 +1,13 @@
+#### 2.0.1 (2021-07-19)
+
+##### Chores
+
+* **package:**  Minor cleanup ([b99811f7](https://github.com/fvdm/nodejs-bitonic/commit/b99811f7182184e045d493a05d5452de231755bf))
+
+##### Bug Fixes
+
+* **package:**  RunKit example key renamed ([4970a456](https://github.com/fvdm/nodejs-bitonic/commit/4970a4566e041fa134789416fba0169819fbd321))
+
 ## 2.0.0 (2021-07-19)
 
 ##### Breaking Changes
