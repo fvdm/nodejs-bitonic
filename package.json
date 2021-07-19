@@ -15,7 +15,7 @@
     "url": "https://github.com/fvdm/nodejs-bitonic/issues"
   },
   "main": "index.js",
-  "tonicExampleFilename": "example.js",
+  "runkitExampleFilename": "example.js",
   "files": [
     "CONTRIBUTING.md",
     "example.js"
