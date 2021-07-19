@@ -17,7 +17,7 @@ Unofficial API wrapper for Bitonic.nl
 const Bitonic = require ('bitonic');
 const bitonic = new Bitonic;
 
-bitonic.buy (
+bitonic.buy ({
   from: 'eur',
   amount: 5,
 })
