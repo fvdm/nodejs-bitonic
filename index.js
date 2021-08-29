@@ -27,28 +27,6 @@ module.exports = class Bitonic {
 
 
   /**
-   * Promisify httpreq.doRequest
-   *
-   * @param   {object}  options  doRequest options
-   *
-   * @return  {Promise<object>}
-   */
-
-  _httpRequest (options) {
-    return new Promise ((resolve, reject) => {
-      doRequest (options, (err, res) => {
-        if (err) {
-          reject (err);
-          return;
-        }
-
-        resolve (res);
-      });
-    });
-  }
-
-
-  /**
    * Send API request
    *
    * @param   {object}  args
@@ -72,7 +50,7 @@ module.exports = class Bitonic {
       },
     };
 
-    return this._httpRequest (options)
+    return doRequest (options)
       .then (res => res.body)
       .then (JSON.parse)
     ;
