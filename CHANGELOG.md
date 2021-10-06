@@ -1,3 +1,13 @@
+#### 2.0.3 (2021-10-06)
+
+##### Chores
+
+* **ci:**  Fixed dependabot array ([cada793c](https://github.com/fvdm/nodejs-bitonic/commit/cada793c455cc422c1c1643e289e79e74d5efba5))
+
+##### Tests
+
+* **config:**  Allow underscore dangle in ESLint ([a19146bd](https://github.com/fvdm/nodejs-bitonic/commit/a19146bd5ec49c195e8d4736cb81790563768b15))
+
 #### 2.0.2 (2021-10-06)
 
 ##### Chores
