@@ -1,3 +1,27 @@
+#### 2.0.2 (2021-10-06)
+
+##### Chores
+
+* **ci:**
+  *  Removed obsolete git fetch ([6a3b0ebb](https://github.com/fvdm/nodejs-bitonic/commit/6a3b0ebb25a1b6b2fbd99e6f599805af4512b358))
+  *  Update dependabot config ([42ab909a](https://github.com/fvdm/nodejs-bitonic/commit/42ab909aa67dce1e91f7b4d6b19e999d3f782911))
+
+##### Documentation Changes
+
+*  Fix example mistake ([4b4298b9](https://github.com/fvdm/nodejs-bitonic/commit/4b4298b93f69584590188b01be65e7399bf8229a))
+
+##### Refactors
+
+*  httpreq now supports promises ([d8eab289](https://github.com/fvdm/nodejs-bitonic/commit/d8eab289f9c8a8cf72780fd0b719086d2cf74268))
+
+##### Tests
+
+* **config:**
+  *  Modern ESLint config ([72a8d06c](https://github.com/fvdm/nodejs-bitonic/commit/72a8d06c0f92078c92caf4fd9565ba6e756d9e82))
+  *  Renamed .eslintrc to .eslintrc.json ([abbe7391](https://github.com/fvdm/nodejs-bitonic/commit/abbe739139e4f60980a6c12f540a6569837fcbe4))
+* **ci:**  Ignore Coveralls error ([8551b0a0](https://github.com/fvdm/nodejs-bitonic/commit/8551b0a0c9f5d0a98a928ef7f584cca47a7c3577))
+* **action:**  Update build workflow ([b0105b11](https://github.com/fvdm/nodejs-bitonic/commit/b0105b1198fb5f2a6852067f4a81377194f9ca7d))
+
 #### 2.0.1 (2021-07-19)
 
 ##### Chores
