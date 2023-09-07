@@ -15,9 +15,9 @@ module.exports = class Bitonic {
    * @param   {number}  [o.timeout=5000]  Request time out in ms
    */
 
-  constructor ({
+  constructor ( {
     timeout = 5000,
-  } = {}) {
+  } = {} ) {
     this._config = {
       timeout,
     };
@@ -47,11 +47,11 @@ module.exports = class Bitonic {
     };
 
     const params = new URLSearchParams( parameters );
-    const url = `https://bitonic.nl/api${path}?${params}`; 
+    const url = `https://bitonic.nl/api${path}?${params}`;
 
     return fetch( url, options )
       .then( res => res.json() )
-    ; 
+    ;
   }
 
 
