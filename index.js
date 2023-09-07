@@ -6,8 +6,6 @@ Author:         Franklin (https://fvdm.com)
 Source & docs:  https://github.com/fvdm/nodejs-bitonic
 */
 
-const { doRequest } = require ('httpreq');
-
 module.exports = class Bitonic {
 
   /**
@@ -38,22 +36,22 @@ module.exports = class Bitonic {
 
   async _apiRequest ({
     path,
-    parameters = null,
   }) {
+    parameters = {},
     const options = {
       method: 'GET',
-      parameters,
-      url: `https://bitonic.nl/api${path}`,
-      timeout: this._config.timeout,
+      signal: AbortSignal.timeout( this._config.timeout ),
       headers: {
         'User-Agent': 'nodejs-bitonic (https://github.com/fvdm/nodejs-bitonic)',
       },
     };
 
-    return doRequest (options)
-      .then (res => res.body)
-      .then (JSON.parse)
-    ;
+    const params = new URLSearchParams( parameters );
+    const url = `https://bitonic.nl/api${path}?${params}`; 
+
+    return fetch( url, options )
+      .then( res => res.json() )
+    ; 
   }
 
 

@@ -19,14 +19,12 @@
   "files": [
     "example.js"
   ],
-  "dependencies": {
-    "httpreq": "^0.5.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "dotest": "^2.9.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "scripts": {
     "test": "dotest"
