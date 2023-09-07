@@ -11,8 +11,8 @@ module.exports = class Bitonic {
   /**
    * Configuration
    *
-   * @param   {object}  args
-   * @param   {number}  [args.timeout=5000]  Request time out in ms
+   * @param   {object}  o
+   * @param   {number}  [o.timeout=5000]  Request time out in ms
    */
 
   constructor ({
@@ -27,17 +27,17 @@ module.exports = class Bitonic {
   /**
    * Send API request
    *
-   * @param   {object}  args
-   * @param   {string}  args.path          API path, i.e. /sell
-   * @param   {object}  [args.parameters]  Request parameters
+   * @param   {object}  o
+   * @param   {string}  o.path          API path, i.e. /sell
+   * @param   {object}  [o.parameters]  Request parameters
    *
    * @return  {Promise<object>}
    */
 
-  async _apiRequest ({
+  async _apiRequest ( {
     path,
-  }) {
     parameters = {},
+  } ) {
     const options = {
       method: 'GET',
       signal: AbortSignal.timeout( this._config.timeout ),
@@ -62,58 +62,58 @@ module.exports = class Bitonic {
    */
 
   async priceAverage () {
-    return this._apiRequest ({
+    return this._apiRequest( {
       path: '/price',
-    });
+    } );
   }
 
 
   /**
    * Method: priceSell
    *
-   * @param   {object}  args
-   * @param   {string}  args.from    Currency to convert from
-   * @param   {number}  args.amount  Amount to convert
+   * @param   {object}  o
+   * @param   {string}  o.from    Currency to convert from
+   * @param   {number}  o.amount  Amount to convert
    *
    * @return  {Promise<object>}
    */
 
-  async priceSell ({
+  async priceSell ( {
     from,
     amount,
-  }) {
-    return this._apiRequest ({
+  } ) {
+    return this._apiRequest( {
       path: '/sell',
       parameters: {
         [from]: amount,
       },
-    });
+    } );
   }
 
 
   /**
    * Method: priceBuy
    *
-   * @param   {object}  args
-   * @param   {string}  args.from            Currency to convert from
-   * @param   {number}  args.amount          Amount to convert
-   * @param   {string}  [args.method=ideal]  Payment method. `ideal` or `bancontact`
+   * @param   {object}  o
+   * @param   {string}  o.from            Currency to convert from
+   * @param   {number}  o.amount          Amount to convert
+   * @param   {string}  [o.method=ideal]  Payment method. `ideal` or `bancontact`
    *
    * @return  {Promise<object>}
    */
 
-  async priceBuy ({
+  async priceBuy ( {
     from,
     amount,
     method = 'ideal',
-  }) {
-    return this._apiRequest ({
+  } ) {
+    return this._apiRequest( {
       path: '/buy',
       parameters: {
         [from]: amount,
         method,
       },
-    });
+    } );
   }
 
 };

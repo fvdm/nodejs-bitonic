@@ -17,12 +17,12 @@ Unofficial API wrapper for Bitonic.nl
 const Bitonic = require ('bitonic');
 const bitonic = new Bitonic;
 
-bitonic.priceBuy ({
+bitonic.priceBuy( {
   from: 'eur',
   amount: 5,
-})
-  .then (data => console.log (`${data.eur} EUR gets you ${data.btc} BTC`))
-  .catch (console.error)
+} )
+  .then( data => console.log( `${data.eur} EUR gets you ${data.btc} BTC` ) )
+  .catch( console.error )
 ;
 ```
 
@@ -47,10 +47,10 @@ param     | type   | default | description
 
 ```js
 // set timeout to 8 seconds
-const Bitonic = require ('bitonic');
-const bitonic = new Bitonic ({
+const Bitonic = require( 'bitonic' );
+const bitonic = new Bitonic( {
   timeout: 8000,
-});
+} );
 ```
 
 
@@ -75,12 +75,12 @@ amount   | number   |         | Amount to convert
 #### Example
 
 ```js
-bitonic.priceBuy ({
+bitonic.priceBuy( {
   from: 'btc',
   amount: 2,
-})
-  .then (data => console.log (`${data.btc} BTC costs ${data.eur} EUR`))
-  .catch (console.error)
+} )
+  .then( data => console.log( `${data.btc} BTC costs ${data.eur} EUR` ) )
+  .catch( console.error )
 ;
 ```
 
@@ -100,12 +100,12 @@ amount   | number   | Amount to convert
 #### Example
 
 ```js
-bitonic.priceSell ({
+bitonic.priceSell( {
   from: 'eur',
   amount: 5.12,
-})
-  .then (data => console.log (`Sell ${data.btc} BTC to get ${data.eur} EUR`))
-  .catch (console.error)
+} )
+  .then( data => console.log( `Sell ${data.btc} BTC to get ${data.eur} EUR` ) )
+  .catch( console.error )
 ;
 ```
 
@@ -120,11 +120,11 @@ Get 24H average price in EUR and volume.
 
 ```js
 bitonic.priceAverage()
-  .then (data => {
-    console.log (`1 BTC is ${data.price} EUR`);
-    console.log (`24H volume is ${data.volume}`);
+  .then( data => {
+    console.log( `1 BTC is ${data.price} EUR` );
+    console.log( `24H volume is ${data.volume}` );
   })
-  .catch (console.error)
+  .catch( console.error )
 ;
 ```
 
