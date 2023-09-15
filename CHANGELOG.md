@@ -1,3 +1,18 @@
+#### 2.0.4 (2023-09-15)
+
+##### Chores
+
+* **package:**  Only major versions dev deps ([166fa83e](https://github.com/fvdm/nodejs-bitonic/commit/166fa83e971f4d9512a8fd10da7cb02914230584))
+* **github:**
+  *  Bump actions/checkout from 3 to 4 ([#14](https://github.com/fvdm/nodejs-bitonic/pull/14)) ([901b00b0](https://github.com/fvdm/nodejs-bitonic/commit/901b00b0bc228ec205f84d107916fa9bf1e97775))
+  *  Bump github/codeql-action from 1 to 2 ([#11](https://github.com/fvdm/nodejs-bitonic/pull/11)) ([cbb71588](https://github.com/fvdm/nodejs-bitonic/commit/cbb715884a0d91679384b9d6f10e63a1812378cb))
+  *  Bump actions/checkout from 2 to 3 ([#9](https://github.com/fvdm/nodejs-bitonic/pull/9)) ([822c2c0d](https://github.com/fvdm/nodejs-bitonic/commit/822c2c0d9988ef9ee6432511f117c9f160d109e0))
+  *  Bump actions/setup-node from 2 to 3.0.0 ([#8](https://github.com/fvdm/nodejs-bitonic/pull/8)) ([2ecd086c](https://github.com/fvdm/nodejs-bitonic/commit/2ecd086cd845cafe6a870012e514a0d89628a4d0))
+
+##### Refactors
+
+*  Replaced httpreq dep by native fetch ([27eb880d](https://github.com/fvdm/nodejs-bitonic/commit/27eb880dbf734a934ee878f998232ce98af417ae))
+
 #### 2.0.3 (2021-10-06)
 
 ##### Chores
